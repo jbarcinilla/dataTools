@@ -1,0 +1,9 @@
+select p.codpais, p.nombrepais, d2.coddepartamento, d2.nombredepartamento, c2.codciudad,  c2.nombre 
+from pais p 
+inner join departamento d2 on p.codpais =d2.codpais
+inner join ciudad c2 on d2.coddepartamento =c2.coddepartamento order by c2.codciudad asc
+
+select v.idplaca, e.tipoidentificacion, e.nroidentificacion, e.nombre from empresas e 
+inner join coductores c on e.nroidentificacion = c.nroidentificacionemp 
+inner join vehiculos v on v.nroidentificacion= c.nroidconductor 
+order by v.idplaca 
