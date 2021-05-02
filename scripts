@@ -1,0 +1,295 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.1
+-- Dumped by pg_dump version 13.1
+
+-- Started on 2021-04-29 15:45:54
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3 (class 2615 OID 2200)
+-- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA public;
+
+
+ALTER SCHEMA public OWNER TO postgres;
+
+--
+-- TOC entry 3024 (class 0 OID 0)
+-- Dependencies: 3
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON SCHEMA public IS 'standard public schema';
+
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 205 (class 1259 OID 16503)
+-- Name: ciudad; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.ciudad (
+    codciudad character varying,
+    coddepartamento character varying,
+    nombre character varying
+);
+
+
+ALTER TABLE public.ciudad OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 16495)
+-- Name: coductores; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.coductores (
+    nroidconductor character varying,
+    tipoidconductor character varying,
+    nombre character varying,
+    direccion character varying,
+    codciudad character varying,
+    coddepartamento character varying,
+    codpais character varying NOT NULL,
+    telefono character varying,
+    nroidentificacionemp character varying
+);
+
+
+ALTER TABLE public.coductores OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 16478)
+-- Name: departamento; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.departamento (
+    codpais character varying,
+    coddepartamento character varying NOT NULL,
+    nombredepartamento character varying
+);
+
+
+ALTER TABLE public.departamento OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 16472)
+-- Name: empresas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.empresas (
+    tipoidentificacion character varying,
+    nroidentificacion character varying NOT NULL,
+    nombre character varying,
+    direccion character varying,
+    ciudad character varying,
+    departamento character varying,
+    pais character varying,
+    telefono character varying
+);
+
+
+ALTER TABLE public.empresas OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 16466)
+-- Name: pais; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pais (
+    codpais character varying NOT NULL,
+    nombrepais character varying
+);
+
+
+ALTER TABLE public.pais OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 16460)
+-- Name: vehiculos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.vehiculos (
+    idplaca character varying,
+    motor character varying,
+    chasis character varying,
+    modelo character varying,
+    fechamatricula character varying,
+    pasajerosentado integer,
+    pasajeropie integer,
+    pesoseco real,
+    pesobruto real,
+    cantidadpuertas integer,
+    marca character varying,
+    linea character varying,
+    nroidentificacion character varying
+);
+
+
+ALTER TABLE public.vehiculos OWNER TO postgres;
+
+--
+-- TOC entry 3018 (class 0 OID 16503)
+-- Dependencies: 205
+-- Data for Name: ciudad; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.ciudad VALUES ('201', '2', 'Medellin');
+INSERT INTO public.ciudad VALUES ('202', '2', 'Bello');
+INSERT INTO public.ciudad VALUES ('106', '1', 'La Chorrera');
+INSERT INTO public.ciudad VALUES ('106', '1', 'Leticia');
+INSERT INTO public.ciudad VALUES ('106', '1', 'Mirití-Paraná');
+INSERT INTO public.ciudad VALUES ('106', '1', 'Puerto Alegría');
+INSERT INTO public.ciudad VALUES ('106', '1', 'Tarapacá');
+INSERT INTO public.ciudad VALUES ('106', '1', 'El Encanto');
+INSERT INTO public.ciudad VALUES ('203', '2', 'Itagüí');
+INSERT INTO public.ciudad VALUES ('204', '2', 'Envigado');
+INSERT INTO public.ciudad VALUES ('205', '2', 'Apartadó	');
+INSERT INTO public.ciudad VALUES ('206', '2', 'Caucasia');
+INSERT INTO public.ciudad VALUES ('207', '2', 'Rionegro');
+INSERT INTO public.ciudad VALUES ('208', '2', 'Chigorodó');
+INSERT INTO public.ciudad VALUES ('209', '2', 'Turbo');
+
+
+--
+-- TOC entry 3017 (class 0 OID 16495)
+-- Dependencies: 204
+-- Data for Name: coductores; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3016 (class 0 OID 16478)
+-- Dependencies: 203
+-- Data for Name: departamento; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.departamento VALUES ('57', '1', 'Amazonas');
+INSERT INTO public.departamento VALUES ('57', '2', 'Antioquia');
+INSERT INTO public.departamento VALUES ('57', '3', 'Arauca');
+INSERT INTO public.departamento VALUES ('57', '4', 'Atlantico');
+INSERT INTO public.departamento VALUES ('57', '5', 'Bolivar');
+INSERT INTO public.departamento VALUES ('57', '6', 'Boyaca');
+INSERT INTO public.departamento VALUES ('57', '7', 'Caldas');
+INSERT INTO public.departamento VALUES ('57', '8', 'Caqueta');
+INSERT INTO public.departamento VALUES ('57', '9', 'Casanare');
+INSERT INTO public.departamento VALUES ('57', '10', 'Cauca');
+INSERT INTO public.departamento VALUES ('57', '11', 'Cesar');
+INSERT INTO public.departamento VALUES ('57', '12', 'Choco');
+INSERT INTO public.departamento VALUES ('57', '13', 'Cordoba');
+INSERT INTO public.departamento VALUES ('57', '14', 'Cundinamarca');
+INSERT INTO public.departamento VALUES ('57', '15', 'Guania');
+INSERT INTO public.departamento VALUES ('57', '16', 'Guaviare');
+INSERT INTO public.departamento VALUES ('57', '17', 'Huila');
+INSERT INTO public.departamento VALUES ('57', '18', 'Guajira');
+INSERT INTO public.departamento VALUES ('57', '19', 'Magdalena');
+INSERT INTO public.departamento VALUES ('57', '20', 'Meta');
+INSERT INTO public.departamento VALUES ('57', '21', 'Nariño');
+INSERT INTO public.departamento VALUES ('57', '22', 'Norte de Santander');
+INSERT INTO public.departamento VALUES ('57', '23', 'Putumayo');
+INSERT INTO public.departamento VALUES ('57', '24', 'Quindio');
+INSERT INTO public.departamento VALUES ('57', '25', 'Risaralda');
+INSERT INTO public.departamento VALUES ('57', '26', 'San Andres Y Prividencias');
+INSERT INTO public.departamento VALUES ('57', '27', 'Santander');
+INSERT INTO public.departamento VALUES ('57', '28', 'Sucre');
+INSERT INTO public.departamento VALUES ('57', '29', 'Tolima');
+INSERT INTO public.departamento VALUES ('57', '30', 'Valle Del Cauca');
+INSERT INTO public.departamento VALUES ('57', '31', 'Vaupes');
+INSERT INTO public.departamento VALUES ('57', '32', 'Vichada');
+
+
+--
+-- TOC entry 3015 (class 0 OID 16472)
+-- Dependencies: 202
+-- Data for Name: empresas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3014 (class 0 OID 16466)
+-- Dependencies: 201
+-- Data for Name: pais; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.pais VALUES ('57', 'Colombia');
+INSERT INTO public.pais VALUES ('56', 'Venezuela');
+INSERT INTO public.pais VALUES ('55', 'Chile');
+
+
+--
+-- TOC entry 3013 (class 0 OID 16460)
+-- Dependencies: 200
+-- Data for Name: vehiculos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2881 (class 2606 OID 16515)
+-- Name: coductores coductores_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.coductores
+    ADD CONSTRAINT coductores_pk PRIMARY KEY (codpais);
+
+
+--
+-- TOC entry 2879 (class 2606 OID 16511)
+-- Name: departamento departamento_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.departamento
+    ADD CONSTRAINT departamento_pk PRIMARY KEY (coddepartamento);
+
+
+--
+-- TOC entry 2877 (class 2606 OID 16513)
+-- Name: empresas empresas_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.empresas
+    ADD CONSTRAINT empresas_pk PRIMARY KEY (nroidentificacion);
+
+
+--
+-- TOC entry 2875 (class 2606 OID 16502)
+-- Name: pais pais_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pais
+    ADD CONSTRAINT pais_pk PRIMARY KEY (codpais);
+
+
+--
+-- TOC entry 2882 (class 1259 OID 16509)
+-- Name: ciudad_coddepartamento_idx; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX ciudad_coddepartamento_idx ON public.ciudad USING btree (coddepartamento);
+
+
+-- Completed on 2021-04-29 15:45:55
+
+--
+-- PostgreSQL database dump complete
+--
+

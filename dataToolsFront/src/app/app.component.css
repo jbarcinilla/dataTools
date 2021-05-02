@@ -1,0 +1,42 @@
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 20px!important;
+    display: block;
+    margin: auto;
+}
+  
+  .full-width {
+    width: 94%;
+  }
+
+  .example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-container .mat-form-field {
+    width: 220px;
+  }
+  
+  .example-container form {
+    margin-bottom: 20px;
+  }
+  
+  .example-container form > * {
+    margin: 5px 0;
+  }
+
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  :host {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0px;
+  }
+
+  

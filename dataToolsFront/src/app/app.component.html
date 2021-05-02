@@ -1,0 +1,72 @@
+<div class="example-container">
+    <mat-card>
+        <mat-card-title style="justify-content: center;">Registrar</mat-card-title>
+        <mat-card-content>
+            <form class="form" [formGroup]="formRegEmpresa">
+                <mat-form-field appearance="fill">
+                    <mat-label>Tipo Identificacion</mat-label>
+                    <mat-select matNativeControl formControlName="tipoDoc">
+                        <mat-option value=""></mat-option>
+                        <mat-option value="CC">Cedula Ciudadania</mat-option>
+                        <mat-option value="CE">Cedula Extranjeria</mat-option>
+                        <mat-option value="NIT">Nit</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Nùmero de identificacion</mat-label>
+                    <input matInput placeholder="Digite el numero de identificacion" formControlName="nroDoc">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Nombre Empresa</mat-label>
+                    <input matInput placeholder="Digite el nombre de la empresa" formControlName="nombEmpresa">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Direccion Empresa</mat-label>
+                    <input matInput placeholder="Digite la direccion de la empresa" formControlName="dirEmpresa">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Telefono Empresa</mat-label>
+                    <input matInput placeholder="Digite el Telefono de la empresa" formControlName="telefono">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Paises</mat-label>
+                    <mat-select matNativeControl formControlName="pais">
+                        <mat-option value=""></mat-option>
+                        <mat-option *ngFor="let pais of paises" [value]="pais.codpais" (click)="buscarDepartamentoPorPais()">
+                            {{pais.nombrepais}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Departamentos</mat-label>
+                    <mat-select matNativeControl formControlName="departamentos">
+                        <mat-option value=""></mat-option>
+                        <mat-option *ngFor="let departamento of departamentos" [value]="departamento.codDepartamento" (click)="buscarCiudadPorPais()">
+                            {{departamento.nombreDepartamento}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Ciuadades</mat-label>
+                    <mat-select matNativeControl formControlName="ciudades" >
+                        <mat-option value=""></mat-option>
+                        <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad.codciudad">
+                            {{ciudad.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+        
+                <button mat-raised-button color="primary" class="full-width " type="submit" (click)="submit()">Aceptar</button>
+        
+        
+            </form>
+        </mat-card-content>
+      
+    </mat-card>
+
+</div>
+
+
+
+
+<router-outlet></router-outlet>
